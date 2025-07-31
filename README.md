@@ -28,6 +28,7 @@ flowchart TD
   LangChain Engine -->|Prompt| LLM(GPT/Gemini)
   LLM -->|Response| Backend --> Frontend
 
+
 ### ➤ LangChain RAG Flow
 
 ```text
@@ -56,7 +57,7 @@ User Query ➝ Embed ➝ Semantic Search ➝ Context + Query ➝ GPT ➝ Smart S
 | Backend         | Node.js + Express.js                         |
 | Database        | PostgreSQL (relational), Redis (jobs/cache)                 |
 | AI Layer        | LangChain + GPT                               |
-| Vector Store    | ChromaDB                                         |
+| Vector Store    | ChromaDB / Pinecone                                         |
 | Notifications   | node-cron + Twilio/SendGrid              |
 | DevOps          | Docker, Vercel (frontend), Railway / Render (backend)       |
 
