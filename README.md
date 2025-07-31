@@ -1,5 +1,4 @@
 
-````markdown
 # Finance Guide – Smart Loan & Repayment Assistant
 
 **Finance Guide** is an AI-powered mobile-first finance tracker that helps **Clients (Borrowers)** and **Senders (Lenders)** manage loans, track installments and get smart, personalized repayment suggestions using **LangChain RAG + LLMs** (GPT/Gemini).
@@ -28,7 +27,6 @@ flowchart TD
   Backend -->|Query| LangChain Engine
   LangChain Engine -->|Prompt| LLM(GPT/Gemini)
   LLM -->|Response| Backend --> Frontend
-````
 
 ### ➤ LangChain RAG Flow
 
