@@ -1,3 +1,8 @@
+
+
+{/* jwt token configuration */}
+
+
 import jwt from 'jsonwebtoken';
 
 export const generateToken = (userId, res) => {
