@@ -1,11 +1,11 @@
 import { Text, View, StyleSheet } from 'react-native';
 
-export default function Index() {
+export default function AboutPage() {
   return (
     <View
       style={styles.container}
     >
-      <Text style={styles.text}>Hello, Shruti!!!</Text>
+      <Text style={styles.text}>Welcome to About Page!!!</Text>
     </View>
   );
 }
@@ -17,11 +17,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#25292e",
   },
-  text: { color: "#ffffff"} ,
-  button: {
-    fontSize: 20,
-    textDecorationLine: "underline",
-    color: "#ffffff"
-  }
+  text: { color: "#ffffff"} 
 }) 
 
