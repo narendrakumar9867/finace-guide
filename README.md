@@ -1,7 +1,7 @@
 
 # Finance Guide – Smart Loan & Repayment Assistant
 
-**Finance Guide** is an AI-powered mobile-first finance tracker that helps **Clients (Borrowers)** and **Senders (Lenders)** manage loans, track installments and get smart, personalized repayment suggestions using **LangChain RAG + LLMs** (GPT/Gemini).
+**Finance Guide** is an AI-powered mobile-first finance tracker that helps **Clients (Borrowers)** and **Senders (Lenders)** manage loans, track installments and get smart, personalized repayment suggestions using **LangChain RAG + LLMs** (Gemini).
 
 ---
 
@@ -11,7 +11,7 @@
 - 💬 AI Chat Assistant for smart finance help
 - 🔔 Installment reminders & penalty alerts
 - 📱 Mobile-first with Expo + React Native
-- 🔙 Scalable backend with Django/Node, PostgreSQL, Redis
+- 🔙 Scalable backend with Node, MongoDB, Redis
 
 ---
 
@@ -25,8 +25,9 @@ flowchart TD
   Frontend -->|API| Backend
   Backend -->|DB Access| PostgreSQL & Redis
   Backend -->|Query| LangChain Engine
-  LangChain Engine -->|Prompt| LLM(GPT/Gemini)
+  LangChain Engine -->|Prompt| LLM(Gemini)
   LLM -->|Response| Backend --> Frontend
+```
 
 
 ### ➤ LangChain RAG Flow

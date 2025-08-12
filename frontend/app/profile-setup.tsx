@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 30,
-    marginTop: 80
+    marginTop: 40
   },
   label: {
     fontSize: 14,
