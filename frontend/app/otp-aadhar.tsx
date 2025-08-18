@@ -1,16 +1,18 @@
-import { memo, useState, useRef } from 'react';
+import { memo, useState, useRef, useEffect } from 'react';
 import {Text, View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useRouter } from 'expo-router';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { authService, AadharDetails } from "../hooks/auth";
 
-const OtpMobileNumber = () => {
+const OtpAadharNumber = () => {
 
     const router = useRouter();
     const { mobileNumber } = useLocalSearchParams();
 
     const [ otp, setOtp] = useState(["", "", "", ""]);
+    const [aadharDetails, setAadharDetails] = useState<AadharDetails | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
     const inputsRef = useRef<(TextInput | null)[]>([]);
 
     const handleChange = (text: string, index: number) => {
@@ -25,23 +27,45 @@ const OtpMobileNumber = () => {
 
     const isOtpComplete = otp.every((digit) => digit !== "");
 
+    useEffect(() => {
+      const fetchAadharDetails = async () => {
+        if (!mobileNumber) return;
+
+        setIsLoading(true);
+
+        const response = await authService.getMockAadharByMobile(mobileNumber as string);
+
+        if (response.success && response.data) {
+          setAadharDetails(response.data);
+        } else {
+          alert(response.error || "failed to fetch aadhar details.");
+        }
+        setIsLoading(false);
+      };
+
+      fetchAadharDetails();
+    }, [mobileNumber])
+
     return (
 
       <View style={styles.container}>
 
         <View style={styles.arrowcontainer}>
-          <TouchableOpacity style={styles.backbutton} onPress={() => router.back()}>
-            <Ionicons name="arrow-back" size={24} color="#333" />
+          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+            <Ionicons name="arrow-back" size={24} color="#333"/>
           </TouchableOpacity>
         </View>
-
         <Text style={styles.title}>
-            OTP Verification
+            Aadhar OTP Verification
         </Text>
 
         <Text style={styles.subtitle}>
-            Enter the OTP sent to {"\n"}
-            +91 {mobileNumber}
+          Enter the OTP sent to {"\n"}
+          Aadhar: {isLoading ? "Loading..." : aadharDetails?.aadharNumber || "not found"}
+        </Text>
+
+        <Text style={styles.subsubtitle}>
+          Enter 4-Digit OTP
         </Text>
 
         <View style={styles.container1}>
@@ -97,8 +121,8 @@ const styles = StyleSheet.create({
   },
   arrowcontainer: {
     position: "absolute",
-    top: 25,
-    left: 20,
+    top: 15,
+    left: 10,
     zIndex: 1
   },
   backButton: {
@@ -106,7 +130,7 @@ const styles = StyleSheet.create({
     padding: 10
   },
   title: {
-    fontSize: 30,
+    fontSize: 25,
     fontWeight: "bold",
     textAlign: "center",
     color: "#000000ff",
@@ -166,4 +190,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default memo(OtpMobileNumber);
+export default memo(OtpAadharNumber);

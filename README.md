@@ -1,7 +1,7 @@
 
 # Finance Guide – Smart Loan & Repayment Assistant
 
-**Finance Guide** is an AI-powered mobile-first finance tracker that helps **Clients (Borrowers)** and **Senders (Lenders)** manage loans, track installments and get smart, personalized repayment suggestions using **LangChain RAG + LLMs** (Gemini).
+**Finance Guide** is an AI-powered mobile-first finance tracker that helps **Clients (Borrowers)** and **Senders (Lenders)** manage loans, track installments and get smart, personalized repayment suggestions using **LangChain RAG + LLMs** (GPT/Gemini).
 
 ---
 
@@ -11,7 +11,7 @@
 - 💬 AI Chat Assistant for smart finance help
 - 🔔 Installment reminders & penalty alerts
 - 📱 Mobile-first with Expo + React Native
-- 🔙 Scalable backend with Node, MongoDB, Redis
+- 🔙 Scalable backend with Node & Express, MongoDB, Redis
 
 ---
 
@@ -23,9 +23,9 @@
 flowchart TD
   User -->|Mobile UI| Frontend
   Frontend -->|API| Backend
-  Backend -->|DB Access| PostgreSQL & Redis
+  Backend -->|DB Access| MongoDB & Redis
   Backend -->|Query| LangChain Engine
-  LangChain Engine -->|Prompt| LLM(Gemini)
+  LangChain Engine -->|Prompt| LLM(GPT/Gemini)
   LLM -->|Response| Backend --> Frontend
 ```
 
@@ -56,7 +56,7 @@ User Query ➝ Embed ➝ Semantic Search ➝ Context + Query ➝ GPT ➝ Smart S
 | --------------- | ----------------------------------------------------------- |
 | Mobile Frontend | Expo + React Native, Tailwind (NativeWind), Axios, Recharts |
 | Backend         | Node.js + Express.js                         |
-| Database        | PostgreSQL (relational), Redis (jobs/cache)                 |
+| Database        | MongoDB (relational), Redis (jobs/cache)                 |
 | AI Layer        | LangChain + GPT                               |
 | Vector Store    | ChromaDB / Pinecone                                         |
 | Notifications   | node-cron + Twilio/SendGrid              |
@@ -69,10 +69,14 @@ User Query ➝ Embed ➝ Semantic Search ➝ Context + Query ➝ GPT ➝ Smart S
 ```
 /finace-guide
 ├── frontend        # Expo mobile app
-├── backend         # Django/Node API + AI engine
-├── docs            # Architecture diagrams, documentation
-├── docker-compose.yml
+├── backend         # Node API + AI engine
+├── .env.example    # Secret Keys of project
+├── .gitignore
+└── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
 └── README.md
+├── SUPPORT.md
+├── docker-compose.yml  # (Optional)
 ```
 
 ---
@@ -133,7 +137,7 @@ npm run dev
 ```
 
 ✅ Add environment variables in `.env`
-✅ Set up PostgreSQL & Redis (Docker or local)
+✅ Set up MongoDB & Redis (Docker or local)
 
 ---
 
