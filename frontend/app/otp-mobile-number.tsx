@@ -2,6 +2,7 @@ import { memo, useState } from 'react';
 import {Text, View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 
 const OtpMobileNumber = () => {
 
@@ -11,6 +12,13 @@ const OtpMobileNumber = () => {
   return (
 
     <View style={styles.container}>
+
+      <View style={styles.arrowcontainer}>
+        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+          <Ionicons name="arrow-back" size={24} color="#333"/>
+        </TouchableOpacity>
+      </View>
+      
       <Text style={styles.title}>
         OTP Verification
       </Text>
@@ -71,12 +79,22 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#fff"
   },
+  arrowcontainer: {
+    position: "absolute",
+    top: 15,
+    left: 10,
+    zIndex: 1
+  },
+  backButton: {
+    alignSelf: "flex-start",
+    padding: 10
+  },
   title: {
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
     color: "#000000ff",
-    marginTop: 10,
+    marginTop: 0,
     marginBottom: 40
   },
   subtitle: {
