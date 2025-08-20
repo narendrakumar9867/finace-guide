@@ -1,15 +1,21 @@
 import express from "express";
+import dotenv from "dotenv";
+import { connectDB } from "./src/config/database.js";
+
+import userRoute from "./src/routes/users.route.js"
+
+dotenv.config();
 
 const app = express();
-const port = 5000;
+const PORT = process.env.PORT;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-    res.send("Hello from backend");
-})
+app.use( "/api", userRoute);
 
-app.listen(port, () => {
-    console.log(`server is running on port ${port}`)
+app.listen(PORT, () => {
+    console.log(`server is running on port ${PORT}`);
+    connectDB();
 })
 
