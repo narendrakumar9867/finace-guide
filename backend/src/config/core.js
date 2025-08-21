@@ -1,0 +1,4 @@
+
+
+{/* CORS settings */}
+
