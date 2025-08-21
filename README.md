@@ -21,11 +21,11 @@
 
 ```mermaid
 flowchart TD
-  User -->|Mobile UI| Frontend
-  Frontend -->|API| Backend
-  Backend -->|DB Access| MongoDB & Redis
-  Backend -->|Query| LangChain Engine
-  LangChain Engine -->|Prompt| LLM(GPT/Gemini)
+  User[User] -->|Mobile UI| Frontend[Frontend]
+  Frontend -->|API| Backend[Backend]
+  Backend -->|DB Access| DB[(MongoDB & Redis)]
+  Backend -->|Query| LangChain[LangChain Engine]
+  LangChain -->|Prompt| LLM["LLM (GPT/Gemini)"]
   LLM -->|Response| Backend --> Frontend
 ```
 
